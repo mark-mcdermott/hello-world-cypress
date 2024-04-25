@@ -2,7 +2,8 @@ version: '3.2'
 services:
 
   sentimentalyzer:
-    build: ../e2e
+    # build: ../e2e
+    build: .
     environment:
       - PORT=8123
 
