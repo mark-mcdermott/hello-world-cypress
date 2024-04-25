@@ -7,7 +7,8 @@ RSpec.describe '/cars', type: :request do
   let(:valid_headers) { { Authorization: "Bearer #{@michael_token}" } }
   let(:valid_attributes) do
     {
-      name: "Jim's Fiat 500",
+      # name: "Jim's Fiat 500",
+      name: "Tim's Fiat 500",
       make: 'Fiat',
       model: '500',
       trim: 'Sport',
