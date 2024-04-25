@@ -33,7 +33,7 @@ services:
 
   # Service for the Nuxt frontend
   frontend:
-    build: ./front
+    build: ../front
     working_dir: /usr/src/nuxt-app
     command: npm run dev
     ports:
