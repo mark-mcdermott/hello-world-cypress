@@ -26,6 +26,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Set Cypress Environment Variable"
+          command:  |
+            cd back
+            echo 'export CYPRESS="1"' >> "$BASH_ENV"
+      - run:
           name: Build Backend & Postgres Containers
           command: |
             cd back
