@@ -7,8 +7,7 @@ RSpec.describe '/cars', type: :request do
   let(:valid_headers) { { Authorization: "Bearer #{@michael_token}" } }
   let(:valid_attributes) do
     {
-      # name: "Jim's Fiat 500",
-      name: "Tim's Fiat 500",
+      name: "Jim's Fiat 500",
       make: 'Fiat',
       model: '500',
       trim: 'Sport',
@@ -101,7 +100,8 @@ RSpec.describe '/cars', type: :request do
     it 'second car has correct properties' do
       get cars_url, headers: valid_headers
       cars = JSON.parse(response.body)
-      elantra = cars.find { |car| car['name'] == "Jim's Hyundai Elantra" }
+      # elantra = cars.find { |car| car['name'] == "Jim's Hyundai Elantra" }
+      elantra = cars.find { |car| car['name'] == "Tim's Hyundai Elantra" }
       expect(elantra['name']).to eq "Jim's Hyundai Elantra"
       expect(elantra['userName']).to eq 'Jim Halpert'
       expect(elantra['image']).to be_kind_of(String)
