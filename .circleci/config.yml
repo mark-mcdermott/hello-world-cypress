@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Frontend/Backend/Postgres Containers
+          name: Build Backend & Postgres Containers
           command: |
             cd back
             docker-compose build
