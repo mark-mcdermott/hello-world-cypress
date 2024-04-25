@@ -1,19 +1,29 @@
 version: 2.1
 jobs:
-  # unit:
-  #   machine:
-  #     image: ubuntu-2004:2023.10.1
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Perform unit tests.
-  #         command: |
-  #           cd e2e
-  #           docker-compose up --exit-code-from cypress
-  #     - store_artifacts:
-  #         path: e2e/cypress/videos
-  #     - store_artifacts:
-  #         path: e2e/cypress/screenshots
+  unit:
+    machine:
+      image: ubuntu-2004:2023.10.1
+    steps:
+      - checkout
+      - run:
+          name: Build Frontend/Backend/Postgres Containers
+          command: |
+            cd back
+            docker-compose build
+      - run:
+          name: Create/Migrate/Seed the Database
+          command: |
+            cd back
+            docker-compose run backend rails db:create db:migrate db:seed
+      - run:
+          name: Run RSpec Tests
+          command: |
+            cd back
+            docker-compose run backend rspec
+      # - store_artifacts:
+      #     path: e2e/cypress/videos
+      # - store_artifacts:
+      #     path: e2e/cypress/screenshots
   e2e:
     machine:
       image: ubuntu-2004:2023.10.1
@@ -31,4 +41,4 @@ jobs:
 workflows:
   test:
     jobs:
-      - e2e
+      - unit
