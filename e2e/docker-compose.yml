@@ -1,15 +1,53 @@
 version: '3.2'
 services:
+
   sentimentalyzer:
     build: ../front
     environment:
       - PORT=8123
+
+  # Service for the PostgreSQL database
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  # Service for the Ruby on Rails web application
+  backend:
+    build: ../back
+    working_dir: /app/backend
+    command: bundle exec CYPRESS=1 rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - .:/app
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/backend
+    depends_on:
+      - db
+
+  # Service for the Nuxt frontend
+  frontend:
+    build: ./front
+    working_dir: /usr/src/nuxt-app
+    command: npm run dev
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+
   cypress:
     image: "cypress/included:4.4.0"
-    depends_on:
-      - sentimentalyzer
     environment:
-      - CYPRESS_baseUrl=http://sentimentalyzer:8123
+      - CYPRESS_baseUrl=http://frontend:3001
+      # - CYPRESS_baseUrl=http://sentimentalyzer:8123
     working_dir: /e2e
     volumes:
       - ./:/e2e 
+    depends_on:
+      - frontend
