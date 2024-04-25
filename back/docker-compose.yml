@@ -12,8 +12,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    depends_on:
-      - cypress
 
   # Service for the Ruby on Rails web application
   backend:
