@@ -41,6 +41,11 @@ jobs:
             cd back
             docker-compose run backend rails db:create db:migrate db:seed
       - run:
+          name: Run Backend Server
+          command: |
+            cd back
+            docker-compose up -d
+      - run:
           name: Perform end-to-end tests
           command: |
             cd e2e
