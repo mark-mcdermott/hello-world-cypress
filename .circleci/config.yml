@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  unit:
+  unit_tests:
     machine:
       image: ubuntu-2004:2023.10.1
     steps:
@@ -20,7 +20,7 @@ jobs:
           command: |
             cd back
             docker-compose run backend rspec
-  e2e:
+  e2e_tests:
     machine:
       image: ubuntu-2004:2023.10.1
     steps:
@@ -35,10 +35,10 @@ jobs:
       - store_artifacts:
           path: e2e/cypress/screenshots
 workflows:
-  test:
+  run_tests:
     jobs:
-      - unit
-      - e2e:
+      - unit_tests
+      - e2e_tests:
           requires:
             - unit
 
