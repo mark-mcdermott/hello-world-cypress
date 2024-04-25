@@ -48,8 +48,8 @@ services:
     working_dir: /e2e
     volumes:
       - ./:/e2e 
-    # depends_on:
-    #   - frontend
+    depends_on:
+      - frontend
 
 # Define a volume for storing PostgreSQL data
 volumes:
