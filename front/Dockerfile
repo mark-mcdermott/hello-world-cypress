@@ -8,6 +8,7 @@ RUN apk update && apk upgrade
 RUN apk add git
 # COPY . /usr/src/nuxt-app/
 RUN npm install
+RUN ls -la
 EXPOSE 3001
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3001
