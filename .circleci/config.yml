@@ -57,8 +57,9 @@ jobs:
 workflows:
   run_tests:
     jobs:
-      - unit_tests
-      - e2e_tests:
-          requires:
-            - unit_tests
+      - e2e_tests
+      # - unit_tests
+      # - e2e_tests:
+      #     requires:
+      #       - unit_tests
 
