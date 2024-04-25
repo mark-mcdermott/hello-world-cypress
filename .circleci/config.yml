@@ -20,10 +20,6 @@ jobs:
           command: |
             cd back
             docker-compose run backend rspec
-      # - store_artifacts:
-      #     path: e2e/cypress/videos
-      # - store_artifacts:
-      #     path: e2e/cypress/screenshots
   e2e:
     machine:
       image: ubuntu-2004:2023.10.1
@@ -42,3 +38,7 @@ workflows:
   test:
     jobs:
       - unit
+      - e2e:
+          requires:
+            - unit
+
