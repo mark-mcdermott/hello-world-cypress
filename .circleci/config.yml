@@ -26,7 +26,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Perform end-to-end tests.
+          name: Perform end-to-end tests
           command: |
             cd e2e
             docker-compose up --exit-code-from cypress

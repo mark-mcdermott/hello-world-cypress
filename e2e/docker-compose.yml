@@ -51,3 +51,7 @@ services:
       - ./:/e2e 
     depends_on:
       - frontend
+
+# Define a volume for storing PostgreSQL data
+volumes:
+  postgres_data:
