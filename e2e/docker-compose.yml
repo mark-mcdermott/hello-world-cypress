@@ -12,4 +12,4 @@ services:
       - CYPRESS_baseUrl=http://sentimentalyzer:8123
     working_dir: /e2e
     volumes:
-      - ./:/e2e
+      - ./:/e2e 
