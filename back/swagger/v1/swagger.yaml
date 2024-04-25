@@ -1,0 +1,67 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/cars":
+    get:
+      summary: list cars
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create car
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+  "/cars/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show car
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update car
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update car
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete car
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
