@@ -100,8 +100,7 @@ RSpec.describe '/cars', type: :request do
     it 'second car has correct properties' do
       get cars_url, headers: valid_headers
       cars = JSON.parse(response.body)
-      # elantra = cars.find { |car| car['name'] == "Jim's Hyundai Elantra" }
-      elantra = cars.find { |car| car['name'] == "Tim's Hyundai Elantra" }
+      elantra = cars.find { |car| car['name'] == "Jim's Hyundai Elantra" }
       expect(elantra['name']).to eq "Jim's Hyundai Elantra"
       expect(elantra['userName']).to eq 'Jim Halpert'
       expect(elantra['image']).to be_kind_of(String)
