@@ -5,7 +5,8 @@ jobs:
       # Choose an explicit machine image so that we get the latest version of
       # docker-compose. Circle's default version won't fail if the target app
       # fails to build.
-      image: ubuntu-1604:201903-01
+      # image: ubuntu-1604:201903-01
+      image: ubuntu-2004:2023.10.1
     steps:
       - checkout
       - run:
