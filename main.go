@@ -80,7 +80,7 @@ func detectSentiment(feelings string) string {
 	cu := countUpperCaseCharacters(feelings)
 	cTot := countLetters(feelings)
 	if float64(cu)/float64(cTot) > 0.5 {
-		return "Angry"
+		return "Angry!"
 	} else {
 		return "Content"
 	}
