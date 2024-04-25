@@ -1,10 +1,10 @@
 version: '3.2'
 services:
 
-  sentimentalyzer:
-    build: ../front
-    environment:
-      - PORT=8123
+  # sentimentalyzer:
+  #   build: ../front
+  #   environment:
+  #     - PORT=8123
 
   # Service for the PostgreSQL database
   db:
